@@ -1,0 +1,31 @@
+defencoding UTF-8
+defkanji UTF-8
+encoding UTF-8 UTF-8
+defutf8 on
+defbce on
+term xterm-256color
+#termcapinfo xterm-256color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l' # for iTerm
+
+escape 
+startup_message off
+vbell off
+hardstatus alwayslastline "%{=b kG} %H %{-} %-w%{=b Wg}%n %t%{-}%+w"
+autodetach on
+defscrollback 102400
+
+#backtick 0 0 0 ${HOME}/.screen/backtick.pl
+
+bind ^w windowlist -b
+bind -c REGION 2 split
+bind -c REGION 1 only
+bind -c REGION 0 remove
+bind -c REGION o focus
+bind -c RESIZE = eval 'resize ='  'command -c RESIZE'
+bind -c RESIZE J eval 'resize +5' 'command -c RESIZE'
+bind -c RESIZE K eval 'resize -5' 'command -c RESIZE'
+bind -c RESIZE j eval 'resize +1' 'command -c RESIZE'
+bind -c RESIZE k eval 'resize -1' 'command -c RESIZE'
+bind -c REGION r eval 'echo "j: -1 / k: +1 / other: quit"' 'command -c RESIZE'
+bind x eval 'echo "2: split / 1: only / 0: rmove / o: focus / r: resize"' 'command -c REGION'
+bind . source $HOME/.screenrc
