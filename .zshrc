@@ -1,20 +1,13 @@
-# -*- zsh -*-
+umask 022
 
 export LANG=ja_JP.UTF-8
-export LC_ALL=ja_JP.UTF-8
-export PATH=/usr/local/bin:/usr/sbin:/opt/local/sbin:/opt/local/bin:$HOME/bin:$HOME/local/bin:$HOME/local/flex3sdk/bin:$PATH
+export PATH=/usr/local/bin:/usr/sbin:$HOME/bin:$HOME/local/bin:$HOME/local/flex3sdk/bin:$PATH
 export MANPATH=/usr/local/man:$MANPATH
-export PAGER="lv -c"
+export PAGER=lv
+export LV='-Ou -c'
 export EDITOR=vim
-export SVN_EDITOR=vim
-export GISTY_DIR="$HOME/git/gist"
 
-# use utf8 with pbcopy/pbpaste
-export __CF_USER_TEXT_ENCODING='0x1F5:0x08000100:14'
-
-source $HOME/.zsh/_echo_git_head
-
-umask 022
+export GISTY_DIR=$HOME/git/gist
 
 autoload -U colors
 colors
@@ -72,7 +65,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 compdef _tex platex
 
-source $HOME/.zsh/cdd
 
 HISTFILE="$HOME/.zhistory"
 HISTSIZE=20000
@@ -82,12 +74,6 @@ bindkey -e
 bindkey '' history-beginning-search-backward
 bindkey '' history-beginning-search-forward
 
-if [ `uname` = "FreeBSD" -o `uname` = "Darwin" ]
-then
-    alias ls='ls -FG'
-else
-    alias ls='ls -F --color=auto'
-fi
 alias sl='ls'
 alias ll='ls -lh'
 alias l='ll'
@@ -103,12 +89,10 @@ alias e='emacs'
 alias pd='popd'
 alias man='w3mman'
 
-alias port='port -v'
 
 alias -g L='| $PAGER'
 alias -g G='| grep'
 alias -g A='| ack -i'
-alias -g CP='| pbcopy'
 
 if [[ "$TERM" == "xterm-256color" || "$TERM" == "xterm" ]]; then
     chpwd () { echo -n "_`dirs`\\" }
@@ -148,7 +132,7 @@ if [[ "$TERM" == "xterm-256color" || "$TERM" == "xterm" ]]; then
     chpwd
 fi
 
-function chpwd() {
+function chpwd () {
     _reg_pwd_screennum
 }
 
@@ -156,3 +140,12 @@ function n () {
     screen -X eval "chdir $PWD" "screen" "chdir"
 }
 
+#source $HOME/.zsh/perldoc
+source $HOME/.zsh/cdd
+source $HOME/.zsh/_echo_git_head
+
+if [ `uname` = "Darwin" ]; then
+    source $HOME/.zsh/.zshrc.osx
+elif [ `uname` = "Linux" ]; then
+    source /Users/wataru/.zsh/.zshrc.linux
+fi

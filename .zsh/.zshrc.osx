@@ -1,0 +1,9 @@
+export PATH=/opt/local/sbin:/opt/local/bin:$PATH
+export MANPATH=/opt/local/man:$MANPATH
+
+# use utf8 with pbcopy/pbpaste
+export __CF_USER_TEXT_ENCODING='0x1F5:0x08000100:14'
+
+alias ls='ls -FG'
+alias port='port -v'
+alias -g CP='| pbcopy'
