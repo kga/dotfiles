@@ -147,5 +147,5 @@ source $HOME/.zsh/_echo_git_head
 if [ `uname` = "Darwin" ]; then
     source $HOME/.zsh/.zshrc.osx
 elif [ `uname` = "Linux" ]; then
-    source /Users/wataru/.zsh/.zshrc.linux
+    source $HOME/.zsh/.zshrc.linux
 fi
