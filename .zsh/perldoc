@@ -1,0 +1,14 @@
+# http://d.hatena.ne.jp/dayflower/20081009/1223520774
+function perldoc () {
+    # count options
+    local opt
+    while getopts ":" opt; do; done
+    if [ $# -eq 1  -a  $OPTIND -le $# ]; then
+        # single argument was specified
+        local file; file=`command perldoc -l $1`
+        [ $? -eq 0 ] && ( pod2man -u $file | nroff -man | $PAGER )
+    else
+        # passthru
+        command perldoc $@
+    fi
+}
