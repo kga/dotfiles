@@ -9,6 +9,10 @@
     ci  = commit -v
     ap  = add -p
     br  = branch
+    co  = checkout
+    df  = diff
+    pr  = pull --rebase
+    gp  = grep -n --color
 [color]
     diff   = auto
     branch = auto
