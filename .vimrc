@@ -92,6 +92,7 @@ if has("autocmd")
     autocmd FileType yaml set expandtab ts=2 sw=2 enc=utf-8 fenc=utf-8
 
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType javascript setlocal nocindent
     autocmd FileType c set omnifunc=ccomplete#Complete expandtab ts=2 sw=2
     autocmd FileType python set omnifunc=pythoncomplete#Complete
     autocmd FileType php set omnifunc=phpcomplete#CompletePHP
@@ -198,14 +199,14 @@ function! ShebangExecute()
 endfunction
 
 " FuzzyFinder
-let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{} }
-let g:FuzzyFinderOptions.Base.ignore_case = 1
-let g:FuzzyFinderOptions.Base.enumerating_limit = 30
-let g:FuzzyFinderOptions.MruFile.max_item = 100
-nnoremap <silent> fb :FuzzyFinderBuffer<CR>
-nnoremap <silent> fm :FuzzyFinderMruFile<CR>
-nnoremap <silent> ff :FuzzyFinderFile<CR>
-nnoremap <silent> fF :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+let g:fuf_modesDisable = []
+let g:fuf_ignoreCase = 1
+let g:fuf_enumeratingLimit = 30
+let g:fuf_mrufile_maxItem = 1000
+nnoremap <silent> fb :FufBuffer<CR>
+nnoremap <silent> fm :FufMruFile<CR>
+nnoremap <silent> ff :FufFile<CR>
+nnoremap <silent> fF :FufFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
 " いろいろ囲むよ
 function! Quote(quote)
