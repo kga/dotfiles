@@ -6,6 +6,7 @@
 [alias]
     st  = status
     lop = log -p
+    ca  = commit -av
     ci  = commit -v
     ap  = add -p
     br  = branch
