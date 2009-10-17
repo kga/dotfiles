@@ -2,7 +2,7 @@
     name  = Wataru TOYA
     email = watrty@gmail.com
 [core]
-    excludesfile = ~/.gitignore
+    excludesfile = /Users/wataru/.gitignore
 [alias]
     st  = status
     lop = log -p
