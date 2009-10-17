@@ -1,13 +1,27 @@
-umask 022
-
 export LANG=ja_JP.UTF-8
-export PATH=/usr/local/bin:/usr/sbin:$HOME/bin:$HOME/local/bin:$HOME/local/flex3sdk/bin:$PATH
+export LC_ALL=ja_JP.UTF-8
+export PATH=/usr/local/bin:/usr/sbin:$PATH
 export MANPATH=/usr/local/man:$MANPATH
 export PAGER=lv
 export LV='-Ou -c'
 export EDITOR=vim
+export GISTY_DIR="$HOME/git/gist"
 
-export GISTY_DIR=$HOME/git/gist
+umask 022
+
+typeset -ga preexec_functions
+typeset -ga precmd_functions
+typeset -ga chpwd_functions
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '[%s|%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+function echo_vcs_info () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+precmd_functions+=echo_vcs_info
 
 autoload -U colors
 colors
@@ -17,13 +31,13 @@ PROMPT_EXIT="%{%(?.$fg[green].$fg[red]exit: %?$reset_color
 )%}
 "
 PROMPT_CWD=" %{$fg[yellow]%}%~%{$reset_color%}"
-PROMPT_REPOS="%{$fg[green]%}\$(_echo_git_head)%{$reset_color%}"
+PROMPT_REPOS=" %1(v|%{$fg[green]%}%1v%{$reset_color%}|)"
 
 #PROMPT_L="
 #%{$fg[blue]%}%(!.#.$)%{$reset_color%} "
 
 PROMPT_L="
-%{$fg[red]%}ﾉﾉ-@.@)%{$reset_color%} "
+%{$fg[red]%}$%{$reset_color%} "
 
 PROMPT="$PROMPT_EXIT$PROMPT_CWD$PROMPT_REPOS$PROMPT_L"
 
@@ -65,7 +79,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 compdef _tex platex
 
-
 HISTFILE="$HOME/.zhistory"
 HISTSIZE=20000
 SAVEHIST=100000
@@ -83,12 +96,12 @@ alias rm='rm -i'
 alias cp='cp -v'
 alias mv='mv -iv'
 
-alias v='vim'
+#alias v='vim'
+alias v='env LANG=ja_JP.UTF-8 open -a /Applications/MacVim.app "$@"'
 alias e='emacs'
 
 alias pd='popd'
 alias man='w3mman'
-
 
 alias -g L='| $PAGER'
 alias -g G='| grep'
@@ -132,17 +145,14 @@ if [[ "$TERM" == "xterm-256color" || "$TERM" == "xterm" ]]; then
     chpwd
 fi
 
-function chpwd () {
-    _reg_pwd_screennum
-}
-
 function n () {
     screen -X eval "chdir $PWD" "screen" "chdir"
 }
 
+chpwd_functions+=_reg_pwd_screennum
+
 #source $HOME/.zsh/perldoc
 source $HOME/.zsh/cdd
-source $HOME/.zsh/_echo_git_head
 
 if [ `uname` = "Darwin" ]; then
     source $HOME/.zsh/.zshrc.osx
