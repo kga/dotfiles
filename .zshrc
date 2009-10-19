@@ -13,9 +13,12 @@ typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga chpwd_functions
 
+# man zshcontrib
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '[%s|%b]'
-zstyle ':vcs_info:*' actionformats '[%s|%b|%a]'
+zstyle ':vcs_info:git:*' get-revision true
+zstyle ':vcs_info:*'     formats '[%s|%b]'
+zstyle ':vcs_info:git:*' formats '[%s|%b(%i)]'
+zstyle ':vcs_info:*'     actionformats '[%s|%b|%a]'
 function echo_vcs_info () {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
