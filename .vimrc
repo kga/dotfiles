@@ -287,3 +287,6 @@ nnoremap <silent> <Space>/ :nohlsearch<CR>
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 
 set exrc
+
+let g:changelog_dateformat="%Y-%m-%d %T"
+let g:changelog_username="Wataru TOYA <watrty@gmail.com>"
