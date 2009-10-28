@@ -89,6 +89,8 @@ SAVEHIST=100000
 bindkey -e
 bindkey '' history-beginning-search-backward
 bindkey '' history-beginning-search-forward
+bindkey '' history-incremental-pattern-search-backward
+bindkey '' history-incremental-pattern-search-forward
 
 alias sl='ls'
 alias ll='ls -lh'
