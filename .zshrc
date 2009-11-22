@@ -2,8 +2,8 @@ export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 export PATH=/usr/local/bin:/usr/sbin:$PATH
 export MANPATH=/usr/local/man:$MANPATH
-export PAGER=lv
-export LV='-Ou -c'
+export PAGER=less
+export LESS='--RAW-CONTROL-CHARS --ignore-case'
 export EDITOR=vim
 export GISTY_DIR="$HOME/git/gist"
 
