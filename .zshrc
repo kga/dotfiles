@@ -100,7 +100,7 @@ alias cp='cp -v'
 alias mv='mv -iv'
 
 #alias v='vim'
-alias v='env LANG=ja_JP.UTF-8 open -a /Applications/MacVim.app "$@"'
+alias v='open -a /Applications/MacVim.app "$@"'
 alias e='emacs'
 
 alias pd='popd'
