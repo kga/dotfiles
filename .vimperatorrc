@@ -1,0 +1,133 @@
+noremap j 5j
+noremap k 5k
+noremap <C-h> <Left>
+noremap <C-l> <Right>
+
+noremap h gT
+noremap l gt
+
+noremap <C-t> <C-z>
+
+cnoremap <C-n> <Tab>
+cnoremap <C-p> <S-Tab>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+
+noremap <silent> ,d :dialog downloads<CR>
+noremap <silent> ,a :dialog addons<CR>
+noremap <silent> ,g :dialog greasemonkey<CR>
+" noremap <silent> ,s :dialog stylish<CR>
+noremap <silent> ,b :open bentry<CR>
+noremap <silent> ,t :tombloo! Link<CR>
+
+noremap U <silent> :undo<Space>
+
+set verbose=5
+set titlestring=
+set guioptions=rb
+set visualbell
+" highlight Bell display:none
+set wildmode=list:full
+set wildoptions=auto
+set complete=tls
+set newtab=all
+set hintmatching=custom
+let g:auto_append_anchor = 'true';
+let g:auto_append_anchor_once = 'true';
+
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+lazy fmaps -urls='reader\.livedoor\.com/reader' j k s a p v <Space> <S-Space> z Z < > q g G h l n r R x T A D \',:
+lazy fmaps -urls='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
+lazy fmaps -urls='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
+
+" autocmd LocationChange '.*' set! network.http.sendRefererHeader=2
+" autocmd LocationChange 'reader\.livedoor\.com/reader' set! network.http.sendRefererHeader=1
+
+autocmd LocationChange '.*' set! browser.tabs.loadDivertedInBackground=false
+autocmd LocationChange 'https?://(?:mail\.google\.com/(?:mail|a)/|(?:reader\.livedoor\.com|fastladder\.com)/reader/)' set! browser.tabs.loadDivertedInBackground=true
+set! ui.key.generalAccessKey=0
+
+qmark t http://tv.goo.ne.jp/, http://tv.starcat.co.jp/channel/weekly/0928/
+
+javascript <<JAVASCRIPT
+(function (self) {
+    var g = liberator.globalVariables;
+
+    g.copy_templates = [
+        { label: 'url',         value: '%URL%' },
+        { label: 'titleAndURL', value: '%TITLE% %URL%' },
+        { label: 'title',       value: '%TITLE%', map: ',y' },
+        { label: 'hatena',      value: '[%URL%:title=%TITLE%]' },
+    ];
+
+    g.proxy_settings = [
+        {
+            conf_name: 'disable',
+            conf_usage: 'direct connection',
+            settings: [ { label: 'type', param: 0 } ]
+        },
+        {
+            conf_name: 'lab',
+            conf_usage: 'socks proxy for lab',
+            settings: [
+                { label: 'type',       param: 1 },
+                { label: 'socks',      param: 'localhost' },
+                { label: 'socks_port', param: 8081 }
+            ]
+        },
+        {
+            conf_name: 'dolipo',
+            conf_usage: 'dolipo',
+            settings: [
+                { label: 'type',      param: 1 },
+                { label: 'http',      param: 'localhost' },
+                { label: 'http_port', param: 8123 }
+            ]
+        }
+    ];
+
+    // feed button
+    var feedButton = document.getElementById('feed-button');
+        feedButton.parentNode.removeChild(feedButton);
+    var feedPanel  = document.createElement('statusbarpanel');
+        feedPanel.setAttribute('id', 'feed-panel-clone');
+        feedPanel.appendChild(feedButton.cloneNode(true));
+    document.getElementById('status-bar').insertBefore(
+        feedPanel,
+        document.getElementById('security-button')
+    );
+
+    // load uc.js
+    if (!g.userChromeLoaded) {
+        var dir = io.getRuntimeDirectories('chrome')[0];
+        io.File(dir).readDirectory().forEach(function (file) {
+            if (/\.uc\.js$/i.test(file.path)) io.source(file.path, false);
+        });
+        g.userChromeLoaded = true;
+    }
+
+    // dialogs
+    [
+        ['greasemonkey', 'Greasemonkey Manager', 'chrome://greasemonkey/content/manage.xul'],
+    ].forEach(function ([name, description, uri, args])
+        config.dialogs.push([name, description, function () liberator.open(uri, liberator.CURRENT_TAB)])
+    );
+
+    if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: self});
+
+    liberator.beep = function() true
+
+})(this);
+JAVASCRIPT
+
+colorscheme simple
+source! ~/.vimperator/userContent.vimp
+
+" source! ~/.vimperatorrc.local
+
+" vim: set ft=vimperator:
