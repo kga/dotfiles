@@ -164,3 +164,6 @@ if [ `uname` = "Darwin" ]; then
 elif [ `uname` = "Linux" ]; then
     source $HOME/.zsh/.zshrc.linux
 fi
+
+source "$HOME/perl5/perlbrew/etc/bashrc"
+export PERL_CPANM_OPT='--mirror http://cpan.cpantesters.org/'
