@@ -94,19 +94,21 @@ bindkey '' history-incremental-pattern-search-forward
 
 alias sl='ls'
 alias ll='ls -lh'
-alias l='ll'
 alias la='ll -a'
 
 alias rm='rm -i'
 alias cp='cp -v'
 alias mv='mv -iv'
 
-#alias v='vim'
-alias v='open -a /Applications/MacVim.app "$@"'
-alias e='emacs'
+alias v='vim'
+#alias v='open -a /Applications/MacVim.app "$@"'
+alias l='less'
 
 alias pd='popd'
 alias man='w3mman'
+
+alias g='git'
+alias st='tig status'
 
 alias -g L='| $PAGER'
 alias -g G='| grep'
