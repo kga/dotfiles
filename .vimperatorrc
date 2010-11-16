@@ -41,7 +41,7 @@ let g:auto_append_anchor = 'true';
 let g:auto_append_anchor_once = 'true';
 
 command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
-lazy fmaps -urls='reader\.livedoor\.com/reader' j k s a p v <Space> <S-Space> z Z < > q g G h l n r R x T A D \',:
+lazy fmaps -urls='reader\.livedoor\.com/reader' j k s a p v <Space> <S-Space> z <S-z> < > q g <S-g> h l n r <S-r> x <S-t> <S-a> <S-d>
 lazy fmaps -urls='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
 lazy fmaps -urls='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
 
