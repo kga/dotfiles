@@ -7,11 +7,12 @@ term xterm-256color
 #termcapinfo xterm-256color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l' # for iTerm
 cjkwidth on
+shell /usr/local/bin/zsh
 
 escape 
 startup_message off
 vbell off
-hardstatus alwayslastline "%{=b kG} %H %{-} %-w%{=b Wg}%n %t%{-}%+w"
+hardstatus alwayslastline "%{=b gW} %H %{-}%{= yy} %{-}%-w%{=b rw}%n %t%{-}%+w %=%{= yy} %{-}%{=b bW} %D %M %d %02c:%s %{-}"
 autodetach on
 defscrollback 102400
 
