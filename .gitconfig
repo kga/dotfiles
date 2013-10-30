@@ -16,5 +16,7 @@
     gp  = grep -n --color
 [color]
     ui = auto
+[diff]
+    algorithm = patience
 [i18n]
     commitencoding = utf-8
