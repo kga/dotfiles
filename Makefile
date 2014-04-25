@@ -13,3 +13,5 @@ symlinks: dirs
 	ln -sf  $(PWD)/.vimrc            $(HOME)/.vimrc
 	ln -sf  $(PWD)/.gvimrc           $(HOME)/.gvimrc
 	ln -sfi $(PWD)/.gitconfig        $(HOME)/.gitconfig
+	ln -sfi $(PWD)/.gitignore        $(HOME)/.gitignore
+	ln -sfi $(PWD)/.gitattributes    $(HOME)/.gitattributes
