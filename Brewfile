@@ -4,6 +4,8 @@ tap homebrew/binary
 tap phinze/homebrew-cask
 
 install git
+install plenv
+install perl-build
 install rbenv
 install ruby-build
 install screen --HEAD
