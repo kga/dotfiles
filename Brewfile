@@ -1,7 +1,7 @@
 update
 
 tap homebrew/binary
-tap phinze/homebrew-cask
+tap caskroom/homebrew-cask
 
 install git
 install plenv
@@ -15,6 +15,7 @@ install brew-cask
 cask update
 cask install alfred
 cask install google-chrome
+cask install google-japanese-ime
 cask install iterm2
 
 cask alfred link
