@@ -1,11 +1,11 @@
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
-export PATH=/usr/local/bin:/usr/sbin:$PATH
 export MANPATH=/usr/local/man:$MANPATH
 export PAGER=less
 export LESS='--RAW-CONTROL-CHARS --ignore-case'
 export EDITOR=vim
-export GISTY_DIR="$HOME/git/gist"
+
+eval `gdircolors -b`
 
 umask 022
 
@@ -40,12 +40,14 @@ PROMPT_REPOS=" %1(v|%{$fg[green]%}%1v%{$reset_color%}|)"
 #%{$fg[blue]%}%(!.#.$)%{$reset_color%} "
 
 PROMPT_L="
-%{$fg[red]%}$%{$reset_color%} "
+[%D{%H:%M}] %{$fg[red]%}$%{$reset_color%} "
 
 PROMPT="$PROMPT_EXIT$PROMPT_CWD$PROMPT_REPOS$PROMPT_L"
 
 PROMPT2="%_$fg[green]>$reset_color "
 RPROMPT="[%n@%m]"
+
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 setopt always_last_prompt
 setopt always_to_end
@@ -92,6 +94,7 @@ bindkey '' history-beginning-search-forward
 bindkey '' history-incremental-pattern-search-backward
 bindkey '' history-incremental-pattern-search-forward
 
+alias ls='ls -G'
 alias sl='ls'
 alias ll='ls -lh'
 alias la='ll -a'
@@ -99,13 +102,13 @@ alias la='ll -a'
 alias rm='rm -i'
 alias cp='cp -v'
 alias mv='mv -iv'
+alias tree='tree -NC'
 
 alias v='vim'
-#alias v='open -a /Applications/MacVim.app "$@"'
 alias l='less'
+alias lv='less'
 
 alias pd='popd'
-alias man='w3mman'
 
 alias g='git'
 alias st='tig status'
@@ -156,10 +159,8 @@ function n () {
     screen -X eval "chdir $PWD" "screen" "chdir"
 }
 
-chpwd_functions+=_reg_pwd_screennum
-
-#source $HOME/.zsh/perldoc
 source $HOME/.zsh/cdd
+chpwd_functions+=_cdd_chpwd
 
 if [ `uname` = "Darwin" ]; then
     source $HOME/.zsh/.zshrc.osx
@@ -167,5 +168,8 @@ elif [ `uname` = "Linux" ]; then
     source $HOME/.zsh/.zshrc.linux
 fi
 
-source "$HOME/perl5/perlbrew/etc/bashrc"
-export PERL_CPANM_OPT='--mirror http://cpan.cpantesters.org/'
+source ~/.zsh/projects.zsh
+
+eval "$(hub alias -s)"
+
+REPORTTIME=10
