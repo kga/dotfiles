@@ -40,7 +40,7 @@ PROMPT_REPOS=" %1(v|%{$fg[green]%}%1v%{$reset_color%}|)"
 #%{$fg[blue]%}%(!.#.$)%{$reset_color%} "
 
 PROMPT_L="
-[%D{%H:%M}] %{$fg[red]%}$%{$reset_color%} "
+%{$fg[cyan]%}[%D{%H:%M}]%{$reset_color%} %{$fg[red]%}$%{$reset_color%} "
 
 PROMPT="$PROMPT_EXIT$PROMPT_CWD$PROMPT_REPOS$PROMPT_L"
 
