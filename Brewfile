@@ -1,7 +1,8 @@
 update
 
 tap homebrew/binary
-tap caskroom/homebrew-cask
+tap caskroom/cask
+tap peco/peco
 
 install git
 install plenv
@@ -10,6 +11,8 @@ install rbenv
 install ruby-build
 #install screen --HEAD
 install zsh --disable-etcdir
+install go
+install peco
 
 install brew-cask
 cask update
