@@ -1,8 +1,16 @@
+[incldue]
+    path = .gitconfig.local
 [user]
-    name  = Wataru TOYA
+    name = Wataru TOYA
     email = watrty@gmail.com
 [core]
-    excludesfile = /Users/wataru/.gitignore
+    excludesfile = ~/.gitignore
+    editor = vim -u NONE -i NONE -N -c 'syntax on'
+    pager = lv -c
+[diff]
+    algorithm = histogram
+[push]
+    default = current
 [alias]
     st  = status
     lop = log -p
@@ -14,9 +22,15 @@
     df  = diff
     pr  = pull --rebase
     gp  = grep -n --color
+    puhs = push
+    psuh = push
+    pus  = push
+    puh  = push
 [color]
     ui = auto
-[diff]
-    algorithm = patience
 [i18n]
     commitencoding = utf-8
+[ghq]
+    root = ~/git
+[credential]
+    helper = osxkeychain
