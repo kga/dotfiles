@@ -6,7 +6,6 @@
 [core]
     excludesfile = ~/.gitignore
     editor = vim -u NONE -i NONE -N -c 'syntax on'
-    pager = lv -c
 [diff]
     algorithm = histogram
 [push]
