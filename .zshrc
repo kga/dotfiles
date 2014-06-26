@@ -5,6 +5,15 @@ export PAGER=less
 export LESS='--RAW-CONTROL-CHARS --ignore-case'
 export EDITOR=vim
 
+export GOPATH=$HOME/go
+
+typeset -U path
+path=(
+    $GOPATH/bin
+
+    $path
+)
+
 eval `gdircolors -b`
 
 umask 022
@@ -110,7 +119,17 @@ alias lv='less'
 
 alias pd='popd'
 
-alias g='git'
+function peco-src () {
+    local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-src
+bindkey '' peco-src
+
 alias st='tig status'
 
 alias -g L='| $PAGER'
@@ -167,8 +186,6 @@ if [ `uname` = "Darwin" ]; then
 elif [ `uname` = "Linux" ]; then
     source $HOME/.zsh/.zshrc.linux
 fi
-
-source ~/.zsh/projects.zsh
 
 eval "$(hub alias -s)"
 
