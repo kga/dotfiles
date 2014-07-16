@@ -14,15 +14,4 @@ install zsh --disable-etcdir
 install go
 install peco
 
-install brew-cask
-cask update
-cask install alfred
-cask install google-chrome
-cask install google-japanese-ime
-cask install iterm2
-
-cask alfred link
-
-cask cleanup
-
 cleanup
