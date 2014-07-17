@@ -1,7 +1,6 @@
 update
 
 tap homebrew/binary
-tap caskroom/cask
 tap peco/peco
 
 install git
