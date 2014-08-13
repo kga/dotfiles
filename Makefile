@@ -10,8 +10,6 @@ symlinks: dirs
 	ln -sf  $(PWD)/.zsh/.zshrc.linux $(HOME)/.zsh/.zshrc.linux
 	ln -sf  $(PWD)/.zsh/cdd          $(HOME)/.zsh/cdd
 	ln -sf  $(PWD)/.screenrc         $(HOME)/.screenrc
-	ln -sf  $(PWD)/.vimrc            $(HOME)/.vimrc
-	ln -sf  $(PWD)/.gvimrc           $(HOME)/.gvimrc
 	ln -sfi $(PWD)/.gitconfig        $(HOME)/.gitconfig
 	ln -sfi $(PWD)/.gitignore        $(HOME)/.gitignore
 	ln -sfi $(PWD)/.gitattributes    $(HOME)/.gitattributes
