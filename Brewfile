@@ -12,5 +12,6 @@ install ruby-build
 install zsh --disable-etcdir
 install go
 install peco
+install hub
 
 cleanup
