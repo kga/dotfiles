@@ -10,6 +10,7 @@ export GOPATH=$HOME/go
 typeset -U path
 path=(
     $GOPATH/bin
+    $(go env GOROOT)/bin
 
     $path
 )
