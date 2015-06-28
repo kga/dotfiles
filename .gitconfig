@@ -11,7 +11,7 @@
 [push]
     default = current
 [alias]
-    st  = status
+    st  = status --branch --short
     lop = log -p
     ca  = commit -av
     ci  = commit -v
@@ -19,14 +19,21 @@
     br  = branch
     co  = checkout
     df  = diff
+    dc  = diff --cached
     pr  = pull --rebase
-    gp  = grep -n --color
+    gg  = grep -H --heading --break --color
     puhs = push
     psuh = push
     pus  = push
     puh  = push
 [color]
     ui = auto
+[color "grep"]
+    filename = blue
+    linenumber = yellow
+    separator = white
+[grep]
+    lineNumber = true
 [i18n]
     commitencoding = utf-8
 [ghq]
