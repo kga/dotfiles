@@ -143,7 +143,6 @@ alias st='tig status'
 
 alias -g L='| $PAGER'
 alias -g G='| grep'
-alias -g A='| ack -i'
 
 if [[ "$TERM" == "xterm-256color" || "$TERM" == "xterm" ]]; then
     chpwd () { echo -n "_`dirs`\\" }
