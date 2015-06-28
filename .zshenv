@@ -8,5 +8,5 @@ path=(
 
     $path
 )
-eval "$(plenv init -)"
-eval "$(rbenv init -)"
+eval "$(plenv init - zsh)"
+eval "$(rbenv init - zsh)"
