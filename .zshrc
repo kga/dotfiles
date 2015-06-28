@@ -104,6 +104,14 @@ bindkey '' history-beginning-search-forward
 bindkey '' history-incremental-pattern-search-backward
 bindkey '' history-incremental-pattern-search-forward
 
+if [ $(uname) = 'Darwin' ]; then
+    LS_OPTIONS=-FG
+    alias -g CP='| pbcopy'
+    export __CF_USER_TEXT_ENCODING='0x1F5:0x08000100:14'
+elif [ $(uname) = 'Linux' ]; then
+    LS_OPTIONS=-F --color
+fi
+
 alias ls='ls -G'
 alias sl='ls'
 alias ll='ls -lh'
@@ -181,12 +189,6 @@ function n () {
 
 source $HOME/.zsh/cdd
 chpwd_functions+=_cdd_chpwd
-
-if [ `uname` = "Darwin" ]; then
-    source $HOME/.zsh/.zshrc.osx
-elif [ `uname` = "Linux" ]; then
-    source $HOME/.zsh/.zshrc.linux
-fi
 
 eval "$(hub alias -s)"
 
