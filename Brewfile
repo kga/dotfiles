@@ -1,17 +1,12 @@
 update
 
-tap homebrew/binary
-tap peco/peco
-
-install git
-install plenv
-install perl-build
-install rbenv
-install ruby-build
-#install screen --HEAD
-install zsh --disable-etcdir
-install go
-install peco
-install hub
-
-cleanup
+brew 'git'
+brew 'plenv'
+brew 'perl-build'
+brew 'rbenv'
+brew 'ruby-build'
+brew 'zsh', args: ['disable-etcdir']
+brew 'tmux'
+brew 'go'
+brew 'peco'
+brew 'hub'
