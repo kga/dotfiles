@@ -182,13 +182,6 @@ if [[ "$TERM" == "xterm-256color" || "$TERM" == "xterm" ]]; then
     chpwd
 fi
 
-function n () {
-    screen -X eval "chdir $PWD" "screen" "chdir"
-}
-
-source $HOME/.zsh/cdd
-chpwd_functions+=_cdd_chpwd
-
 eval "$(hub alias -s)"
 
 REPORTTIME=10
