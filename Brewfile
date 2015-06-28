@@ -1,4 +1,7 @@
+tap 'homebrew/brewdler'
 brew 'git'
+brew 'openssl'
+brew 'pkg-config'
 brew 'plenv'
 brew 'perl-build'
 brew 'rbenv'
@@ -8,3 +11,5 @@ brew 'tmux'
 brew 'go'
 brew 'peco'
 brew 'hub'
+brew 'vim', args: ['HEAD']
+brew 'tig'
