@@ -1,5 +1,3 @@
-update
-
 brew 'git'
 brew 'plenv'
 brew 'perl-build'
