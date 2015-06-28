@@ -26,6 +26,10 @@
     psuh = push
     pus  = push
     puh  = push
+[pager]
+    log  = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+    diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+    show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 [color]
     ui = auto
 [color "grep"]
