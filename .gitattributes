@@ -1,3 +1,0 @@
-*.pm diff=perl
-*.pl diff=perl
-*.rb diff=ruby
