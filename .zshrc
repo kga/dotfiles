@@ -26,9 +26,9 @@ typeset -ga chpwd_functions
 # man zshcontrib
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' get-revision true
-zstyle ':vcs_info:*'     formats '[%s|%b]'
-zstyle ':vcs_info:git:*' formats '[%s|%b(%i)]'
-zstyle ':vcs_info:*'     actionformats '[%s|%b|%a]'
+zstyle ':vcs_info:*'     formats '%s|%b'
+zstyle ':vcs_info:git:*' formats '%b(%i)'
+zstyle ':vcs_info:*'     actionformats '%s|%b|%a'
 function echo_vcs_info () {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
@@ -43,19 +43,16 @@ setopt prompt_subst
 PROMPT_EXIT="%{%(?.$fg[green].$fg[red]exit: %?$reset_color
 )%}
 "
-PROMPT_CWD=" %{$fg[yellow]%}%~%{$reset_color%}"
-PROMPT_REPOS=" %1(v|%{$fg[green]%}%1v%{$reset_color%}|)"
-
-#PROMPT_L="
-#%{$fg[blue]%}%(!.#.$)%{$reset_color%} "
+PROMPT_CWD=" $fg[blue]%(7~,%-3~/.../%3~,%~)$reset_color"
+PROMPT_REPOS=" %1(v|$fg[green]%1v$reset_color|)"
 
 PROMPT_L="
-%{$fg[cyan]%}[%D{%H:%M}]%{$reset_color%} %{$fg[red]%}$%{$reset_color%} "
+$fg[white]%D{%H:%M}$reset_color %B$fg[red]%(!.#.>)%b$reset_color "
 
 PROMPT="$PROMPT_EXIT$PROMPT_CWD$PROMPT_REPOS$PROMPT_L"
 
 PROMPT2="%_$fg[green]>$reset_color "
-RPROMPT="[%n@%m]"
+#RPROMPT="[%n@%m]"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
