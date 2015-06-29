@@ -1,0 +1,9 @@
+{
+    "Prompt": ">",
+    "Style": {
+        "Basic": ["on_default", "default"],
+        "Selected": ["green"],
+        "Query": ["yellow"],
+        "Matched": ["red"]
+    }
+}
