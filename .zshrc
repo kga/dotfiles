@@ -40,18 +40,18 @@ autoload -U colors
 colors
 
 setopt prompt_subst
-PROMPT_EXIT="%{%(?.$fg[green].$fg[red]exit: %?$reset_color
+PROMPT_EXIT="%{%(?.%{$fg[green]%}.%{$fg[red]%}exit: %?%{$reset_color%}
 )%}
 "
-PROMPT_CWD=" $fg[blue]%(7~,%-3~/.../%3~,%~)$reset_color"
-PROMPT_REPOS=" %1(v|$fg[green]%1v$reset_color|)"
+PROMPT_CWD=" %{$fg[blue]%}%(7~,%-3~/.../%3~,%~)%{$reset_color%}"
+PROMPT_REPOS=" %1(v|%{$fg[green]%}%1v%{$reset_color%}|)"
 
 PROMPT_L="
-$fg[white]%D{%H:%M}$reset_color %B$fg[red]%(!.#.>)%b$reset_color "
+%D{%H:%M} %{$fg[red]%}%(!.#.>)%{$reset_color%} "
 
 PROMPT="$PROMPT_EXIT$PROMPT_CWD$PROMPT_REPOS$PROMPT_L"
 
-PROMPT2="%_$fg[green]>$reset_color "
+PROMPT2="%_%{$fg[green]%}>%{$reset_color%} "
 #RPROMPT="[%n@%m]"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
