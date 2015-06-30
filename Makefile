@@ -11,3 +11,5 @@ symlinks: dirs
 	ln -sfi $(PWD)/.gitconfig        $(HOME)/.gitconfig
 	ln -sfi $(PWD)/.gitignore        $(HOME)/.gitignore
 	ln -sfi $(PWD)/.tigrc            $(HOME)/.tigrc
+	mkdir -p $(HOME)/.config/peco
+	ln -sf  $(PWD)/.peco.config.json $(HOME)/.config/peco/config.json
