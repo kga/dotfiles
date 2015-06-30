@@ -1,24 +1,3 @@
-export LANG=ja_JP.UTF-8
-export LC_ALL=ja_JP.UTF-8
-export MANPATH=/usr/local/man:$MANPATH
-export PAGER=less
-export LESS='--RAW-CONTROL-CHARS --ignore-case'
-export EDITOR=vim
-
-export GOPATH=$HOME/go
-
-typeset -U path
-path=(
-    $GOPATH/bin
-    $(go env GOROOT)/bin
-
-    $path
-)
-
-eval `gdircolors -b`
-
-umask 022
-
 typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga chpwd_functions
