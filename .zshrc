@@ -3,10 +3,10 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' max-exports 3
 zstyle ':vcs_info:*+*:*' debug false
 zstyle ':vcs_info:git:*' get-revision true
-zstyle ':vcs_info:*'     formats '%s|%b'
-zstyle ':vcs_info:git:*' formats       '%b(%0.8i)' '%c%u'
-zstyle ':vcs_info:*'     actionformats '%b(%0.8i)' '%c%u' '(!%a)'
 zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:*'     formats       '%b | %i'
+zstyle ':vcs_info:git:*' formats       '%b | %0.8i' '%c%u'
+zstyle ':vcs_info:*'     actionformats '%b | %0.8i' '%c%u' '(!%a)'
 zstyle ':vcs_info:git:*' unstagedstr '-'
 zstyle ':vcs_info:git:*' stagedstr '+'
 
