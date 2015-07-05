@@ -1,5 +1,4 @@
 typeset -ga preexec_functions
-typeset -ga precmd_functions
 typeset -ga chpwd_functions
 
 # man zshcontrib
@@ -13,6 +12,8 @@ zstyle ':vcs_info:*'     actionformats '%b(%i)' '%c%u' '(!%a)'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' unstagedstr '-'
 zstyle ':vcs_info:git:*' stagedstr '+'
+
+autoload -Uz add-zsh-hook
 
 # ref. http://qiita.com/mollifier/items/8d5a627d773758dd8078
 zstyle ':vcs_info:git+set-message:*' hooks \
