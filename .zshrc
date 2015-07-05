@@ -12,12 +12,23 @@ zstyle ':vcs_info:git:*' stagedstr '+'
 
 autoload -Uz add-zsh-hook
 
-# ref. http://qiita.com/mollifier/items/8d5a627d773758dd8078
+# man zshcontrib -> Hooks in vcs_info -> set-message
+## $1: n == $vcs_info_msg_{n}_ 何番目の formats か
 zstyle ':vcs_info:git+set-message:*' hooks \
-                                         git-hook-begin \
+                                         git-hook-shorten-revision \
+                                         git-hook-inside-work-tree \
                                          git-hook-untracked
 
-function +vi-git-hook-begin() {
+# $vcs_info_msg_0_
+# sha1 を 8 桁にする
+function +vi-git-hook-shorten-revision() {
+    if [[ $1 == 0 ]]; then
+        hook_com[revision]=${hook_com[revision]:0:8}
+    fi
+}
+
+# この hook 以降は work-tree 内じゃないと実行されない
+function +vi-git-hook-inside-work-tree() {
     if [[ $(command git rev-parse --is-inside-work-tree 2> /dev/null) != 'true' ]]; then
         return 1
     fi
@@ -25,18 +36,16 @@ function +vi-git-hook-begin() {
     return 0
 }
 
+# $vcs_info_msg_1_
+# untracked があったら unstaged の + のうしろに ? をつける
 function +vi-git-hook-untracked() {
-    # man zshcontrib -> Hooks in vcs_info -> set-message
-    ## $1 == 1 == $vcs_info_msg_1_ を表示するときのみ hook
-    if [[ $1 != 1 ]]; then
-        return 0
-    fi
+    if [[ $1 == 1 ]]; then
+        if command git status --porcelain 2> /dev/null \
+            | awk '{print $1}' \
+            | command grep -F '??' > /dev/null 2>&1 ; then
 
-    if command git status --porcelain 2> /dev/null \
-        | awk '{print $1}' \
-        | command grep -F '??' > /dev/null 2>&1 ; then
-
-        hook_com[unstaged]+='?'
+            hook_com[unstaged]+='?'
+        fi
     fi
 }
 
