@@ -23,8 +23,6 @@ function +vi-git-hook-inside-work-tree() {
     if [[ $(command git rev-parse --is-inside-work-tree 2> /dev/null) != 'true' ]]; then
         return 1
     fi
-
-    return 0
 }
 
 # $vcs_info_msg_1_
