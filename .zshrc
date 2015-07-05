@@ -4,8 +4,8 @@ zstyle ':vcs_info:*' max-exports 3
 zstyle ':vcs_info:*+*:*' debug false
 zstyle ':vcs_info:git:*' get-revision true
 zstyle ':vcs_info:*'     formats '%s|%b'
-zstyle ':vcs_info:git:*' formats       '%b(%i)' '%c%u'
-zstyle ':vcs_info:*'     actionformats '%b(%i)' '%c%u' '(!%a)'
+zstyle ':vcs_info:git:*' formats       '%b(%0.8i)' '%c%u'
+zstyle ':vcs_info:*'     actionformats '%b(%0.8i)' '%c%u' '(!%a)'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' unstagedstr '-'
 zstyle ':vcs_info:git:*' stagedstr '+'
@@ -15,17 +15,8 @@ autoload -Uz add-zsh-hook
 # man zshcontrib -> Hooks in vcs_info -> set-message
 ## $1: n == $vcs_info_msg_{n}_ 何番目の formats か
 zstyle ':vcs_info:git+set-message:*' hooks \
-                                         git-hook-shorten-revision \
                                          git-hook-inside-work-tree \
                                          git-hook-untracked
-
-# $vcs_info_msg_0_
-# sha1 を 8 桁にする
-function +vi-git-hook-shorten-revision() {
-    if [[ $1 == 0 ]]; then
-        hook_com[revision]=${hook_com[revision]:0:8}
-    fi
-}
 
 # この hook 以降は work-tree 内じゃないと実行されない
 function +vi-git-hook-inside-work-tree() {
