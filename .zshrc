@@ -7,6 +7,8 @@ export EDITOR=vim
 
 export GOPATH=$HOME/go
 
+autoload -Uz add-zsh-hook
+
 typeset -U path
 path=(
     $GOPATH/bin
@@ -25,26 +27,61 @@ typeset -ga chpwd_functions
 
 # man zshcontrib
 autoload -Uz vcs_info
+zstyle ':vcs_info:*' max-exports 3
+zstyle ':vcs_info:*+*:*' debug false
 zstyle ':vcs_info:git:*' get-revision true
 zstyle ':vcs_info:*'     formats '%s|%b'
-zstyle ':vcs_info:git:*' formats '%b(%i)'
-zstyle ':vcs_info:*'     actionformats '%s|%b|%a'
-function echo_vcs_info () {
+zstyle ':vcs_info:git:*' formats       '%b(%i)' '%c%u'
+zstyle ':vcs_info:*'     actionformats '%b(%i)' '%c%u' '(!%a)'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' unstagedstr '-'
+zstyle ':vcs_info:git:*' stagedstr '+'
+
+# ref. http://qiita.com/mollifier/items/8d5a627d773758dd8078
+zstyle ':vcs_info:git+set-message:*' hooks \
+                                         git-hook-begin \
+                                         git-hook-untracked
+
+function +vi-git-hook-begin() {
+    if [[ $(command git rev-parse --is-inside-work-tree 2> /dev/null) != 'true' ]]; then
+        return 1
+    fi
+
+    return 0
+}
+
+# なぜか引数の値が上記エントリと違う...
+function +vi-git-hook-untracked() {
+    if [[ "$1" != "0" ]]; then
+        return 1
+    fi
+
+    if command git status --porcelain 2> /dev/null \
+        | awk '{print $1}' \
+        | command grep -F '??' > /dev/null 2>&1 ; then
+
+        hook_com[unstaged]+='?'
+    fi
+}
+
+function echo_vcs_info() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+
+    [[ -n $vcs_info_msg_0_ ]] && psvar[1]=$vcs_info_msg_0_ # %b(%i)
+    [[ -n $vcs_info_msg_1_ ]] && psvar[2]=$vcs_info_msg_1_ # %c%u
+    [[ -n $vcs_info_msg_2_ ]] && psvar[3]=$vcs_info_msg_2_ # (!%a)
 }
-precmd_functions+=echo_vcs_info
+add-zsh-hook precmd echo_vcs_info
 
 autoload -U colors
 colors
 
-setopt prompt_subst
-PROMPT_EXIT="%{%(?.%{$fg[green]%}.%{$fg[red]%}exit: %?%{$reset_color%}
-)%}
+PROMPT_EXIT="%(?..%{$fg[red]%}exit: %?%{$reset_color%})
 "
 PROMPT_CWD=" %{$fg[blue]%}%(7~,%-3~/.../%3~,%~)%{$reset_color%}"
-PROMPT_REPOS=" %1(v|%{$fg[green]%}%1v%{$reset_color%}|)"
+# man zshmisc -> CONDITIONAL SUBSTRINGS IN PROMPTS
+PROMPT_REPOS="%(2V|%{$fg[yellow]%} %2v%{$reset_color%}|)%(3V| %{$fg[red]%}%3v%{$reset_color%}|)%(1V|%{$fg[green]%} %1v%{$reset_color%}|)"
 
 PROMPT_L="
 %D{%H:%M} %{$fg[red]%}%(!.#.>)%{$reset_color%} "
