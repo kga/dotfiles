@@ -25,10 +25,11 @@ function +vi-git-hook-begin() {
     return 0
 }
 
-# なぜか引数の値が上記エントリと違う...
 function +vi-git-hook-untracked() {
-    if [[ "$1" != "0" ]]; then
-        return 1
+    # man zshcontrib -> Hooks in vcs_info -> set-message
+    ## $1 == 1 == $vcs_info_msg_1_ を表示するときのみ hook
+    if [[ $1 != 1 ]]; then
+        return 0
     fi
 
     if command git status --porcelain 2> /dev/null \
