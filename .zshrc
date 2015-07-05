@@ -1,6 +1,3 @@
-typeset -ga preexec_functions
-typeset -ga chpwd_functions
-
 # man zshcontrib
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' max-exports 3
