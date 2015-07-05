@@ -42,25 +42,26 @@ function echo_vcs_info() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
 
-    [[ -n $vcs_info_msg_0_ ]] && psvar[1]=$vcs_info_msg_0_ # %b(%i)
-    [[ -n $vcs_info_msg_1_ ]] && psvar[2]=$vcs_info_msg_1_ # %c%u
-    [[ -n $vcs_info_msg_2_ ]] && psvar[3]=$vcs_info_msg_2_ # (!%a)
+    [[ -n $vcs_info_msg_0_ ]] && psvar[1]=$vcs_info_msg_0_
+    [[ -n $vcs_info_msg_1_ ]] && psvar[2]=$vcs_info_msg_1_
+    [[ -n $vcs_info_msg_2_ ]] && psvar[3]=$vcs_info_msg_2_
 }
 add-zsh-hook precmd echo_vcs_info
 
 autoload -U colors
 colors
 
-PROMPT_EXIT="%(?..%{$fg[red]%}exit: %?%{$reset_color%})
-"
+PROMPT_EXIT="%(?..%{$fg[red]%}exit: %?%{$reset_color%}
+)"
 PROMPT_CWD=" %{$fg[blue]%}%(7~,%-3~/.../%3~,%~)%{$reset_color%}"
 # man zshmisc -> CONDITIONAL SUBSTRINGS IN PROMPTS
 PROMPT_REPOS="%(2V|%{$fg[yellow]%} %2v%{$reset_color%}|)%(3V| %{$fg[red]%}%3v%{$reset_color%}|)%(1V|%{$fg[green]%} %1v%{$reset_color%}|)"
 
-PROMPT_L="
-%D{%H:%M} %{$fg[red]%}%(!.#.>)%{$reset_color%} "
+PROMPT_L="%D{%H:%M} %{$fg[red]%}%(!.#.>)%{$reset_color%} "
 
-PROMPT="$PROMPT_EXIT$PROMPT_CWD$PROMPT_REPOS$PROMPT_L"
+PROMPT="$PROMPT_EXIT
+$PROMPT_CWD$PROMPT_REPOS
+$PROMPT_L"
 
 PROMPT2="%_%{$fg[green]%}>%{$reset_color%} "
 #RPROMPT="[%n@%m]"
