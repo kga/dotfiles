@@ -1,12 +1,12 @@
 # man zshcontrib
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' max-exports 3
+zstyle ':vcs_info:*' max-exports 5
 zstyle ':vcs_info:*+*:*' debug false
 zstyle ':vcs_info:git:*' get-revision true
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:*'     formats       '%b | %i'
-zstyle ':vcs_info:git:*' formats       '%b | %0.8i' '%c%u'
-zstyle ':vcs_info:*'     actionformats '%b | %0.8i' '%c%u' '(!%a)'
+zstyle ':vcs_info:git:*' formats       '%F{green}%b%f %F{yellow}|%f %F{cyan}%0.8i%f' '%c' '%u' '%m'
+zstyle ':vcs_info:*'     actionformats '%F{green}%b%f %F{yellow}|%f %F{cyan}%0.8i%f' '%c' '%u' '%m' '(!%a)'
 zstyle ':vcs_info:git:*' unstagedstr '-'
 zstyle ':vcs_info:git:*' stagedstr '+'
 
@@ -26,25 +26,35 @@ function +vi-git-hook-inside-work-tree() {
 }
 
 # $vcs_info_msg_1_
-# untracked があったら unstaged の + のうしろに ? をつける
+# untracked があったら misc に ? をいれる
 function +vi-git-hook-untracked() {
     if [[ $1 == 1 ]]; then
         if command git status --porcelain 2> /dev/null \
             | awk '{print $1}' \
             | command grep -F '??' > /dev/null 2>&1 ; then
 
-            hook_com[unstaged]+='?'
+            hook_com[misc]='?'
         fi
     fi
 }
 
 function echo_vcs_info() {
-    psvar=()
     LANG=en_US.UTF-8 vcs_info
 
-    [[ -n $vcs_info_msg_0_ ]] && psvar[1]=$vcs_info_msg_0_
-    [[ -n $vcs_info_msg_1_ ]] && psvar[2]=$vcs_info_msg_1_
-    [[ -n $vcs_info_msg_2_ ]] && psvar[3]=$vcs_info_msg_2_
+    local PROMPT_REPOS=''
+    local PROMPT_REPOS_STATUS=''
+
+    [[ -n $vcs_info_msg_1_ ]] && PROMPT_REPOS_STATUS+="%F{red}$vcs_info_msg_1_%f"
+    [[ -n $vcs_info_msg_2_ ]] && PROMPT_REPOS_STATUS+="%F{yellow}$vcs_info_msg_2_%f"
+    [[ -n $vcs_info_msg_3_ ]] && PROMPT_REPOS_STATUS+="%F{blue}$vcs_info_msg_3_%f"
+    [[ -n $vcs_info_msg_4_ ]] && PROMPT_REPOS_STATUS+=" %F{red}$vcs_info_msg_4_%f"
+
+    [[ -n $PROMPT_REPOS_STATUS ]] && PROMPT_REPOS+=" $PROMPT_REPOS_STATUS"
+    [[ -n $vcs_info_msg_0_ ]] && PROMPT_REPOS+=" $vcs_info_msg_0_"
+
+PROMPT="$PROMPT_EXIT
+$PROMPT_CWD$PROMPT_REPOS
+$PROMPT_L"
 }
 add-zsh-hook precmd echo_vcs_info
 
@@ -54,13 +64,10 @@ colors
 PROMPT_EXIT="%(?..%{$fg[red]%}exit: %?%{$reset_color%}
 )"
 PROMPT_CWD=" %{$fg[blue]%}%(7~,%-3~/.../%3~,%~)%{$reset_color%}"
-# man zshmisc -> CONDITIONAL SUBSTRINGS IN PROMPTS
-PROMPT_REPOS="%(2V|%{$fg[yellow]%} %2v%{$reset_color%}|)%(3V| %{$fg[red]%}%3v%{$reset_color%}|)%(1V|%{$fg[green]%} %1v%{$reset_color%}|)"
-
 PROMPT_L="%D{%H:%M} %{$fg[red]%}%(!.#.>)%{$reset_color%} "
 
 PROMPT="$PROMPT_EXIT
-$PROMPT_CWD$PROMPT_REPOS
+$PROMPT_CWD
 $PROMPT_L"
 
 PROMPT2="%_%{$fg[green]%}>%{$reset_color%} "
