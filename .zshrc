@@ -144,6 +144,9 @@ alias lv='less'
 
 alias pd='popd'
 
+alias ce='carton exec'
+alias be='bundle exec'
+
 function peco-src () {
     local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
