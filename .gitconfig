@@ -18,6 +18,7 @@
     ap  = add -p
     br  = branch
     co  = checkout
+    com = checkout master
     df  = diff
     dc  = diff --cached
     pr  = pull --rebase
