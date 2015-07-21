@@ -6,6 +6,8 @@ export LESS='--RAW-CONTROL-CHARS --IGNORE-CASE --status-column'
 export PAGER=less
 export EDITOR=vim
 
+export MYSQL_PS1="(\u@\h) [\d]> "
+
 export GOPATH=$HOME/go
 
 typeset -U path
