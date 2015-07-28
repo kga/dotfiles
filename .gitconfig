@@ -12,6 +12,7 @@
     default = current
 [alias]
     st  = status --branch --short
+    tst = st
     lop = log -p
     ca  = commit -av
     ci  = commit -v
