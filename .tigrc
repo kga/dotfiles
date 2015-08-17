@@ -1,2 +1,3 @@
 set main-view = id date author commit-title:graph=yes,refs=yes
 set line-graphics = ascii
+set vertical-split = false
