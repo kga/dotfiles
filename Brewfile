@@ -14,3 +14,4 @@ brew 'peco'
 brew 'hub'
 brew 'vim', args: ['HEAD']
 brew 'tig'
+brew 'reattach-to-user-namespace'
