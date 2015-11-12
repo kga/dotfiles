@@ -1,5 +1,5 @@
-[incldue]
-    path = .gitconfig.local
+[include]
+    path = ~/.gitconfig.local
 [user]
     name = Wataru TOYA
     email = watrty@gmail.com
