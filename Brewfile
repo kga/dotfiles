@@ -7,7 +7,7 @@ brew 'plenv'
 brew 'perl-build'
 brew 'rbenv'
 brew 'ruby-build'
-brew 'zsh', args: ['disable-etcdir']
+brew 'zsh', args: ['without-etcdir']
 brew 'tmux'
 brew 'go'
 brew 'peco'
