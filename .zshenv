@@ -19,6 +19,7 @@ path=(
     $GOPATH/bin
 
     $HOME/bin
+    $HOME/.ndenv/bin
 
     $path
 )
@@ -27,5 +28,6 @@ export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
 
 eval "$(plenv init - zsh)"
 eval "$(rbenv init - zsh)"
+eval "$(ndenv init -)"
 
 umask 022

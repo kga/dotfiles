@@ -9,4 +9,6 @@ curl -O https://raw.githubusercontent.com/kga/dotfiles/master/Brewfile
 brew bundle
 rm Brewfile
 
+git clone https://github.com/riywo/ndenv ~/.ndenv
+
 ln -s $(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh $(brew --prefix)/share/zsh/site-functions/_brew
