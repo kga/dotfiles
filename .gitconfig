@@ -46,3 +46,5 @@
     root = ~/git
 [credential]
     helper = osxkeychain
+[pull]
+	rebase = preserve
