@@ -28,6 +28,6 @@ path=(
 
 eval "$(plenv init - zsh)"
 eval "$(rbenv init - zsh)"
-eval "$(ndenv init -)"
+eval "$(ndenv init - zsh)"
 
 umask 022
