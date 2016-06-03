@@ -1,0 +1,15 @@
+script_line1 = use strict
+script_line2 = use warnings
+
+[ReadLine]
+history_file = '.reply_history'
+history_length = 100
+
+[LoadClass]
+[Interrupt]
+[FancyPrompt]
+[DataDump]
+[Colors]
+[Hints]
+[Packages]
+[LexicalPersistence]
