@@ -24,7 +24,7 @@ path=(
     $path
 )
 
-export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
+#export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
 
 eval "$(plenv init - zsh)"
 eval "$(rbenv init - zsh)"
