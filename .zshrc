@@ -212,3 +212,5 @@ for f (~/.zsh/**/*.zsh) source "${f}"
 
 ### peco ###
 bindkey '^g' peco-git-branch-checkout
+
+source /usr/local/share/zsh/site-functions/_aws
