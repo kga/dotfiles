@@ -43,8 +43,7 @@
 [i18n]
     commitencoding = utf-8
 [ghq]
-    root = ~/git
-    root = ~/go/src
+    root = ~/dev/src
 [credential]
     helper = osxkeychain
 [pull]

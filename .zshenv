@@ -8,7 +8,7 @@ export EDITOR=vim
 
 export MYSQL_PS1="(\u@\h) [\d]> "
 
-export GOPATH=$HOME/go
+export GOPATH=$HOME/dev
 
 typeset -U path
 path=(
