@@ -111,7 +111,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 compdef _tex platex
 
 HISTFILE="$HOME/.zhistory"
-HISTSIZE=20000
+HISTSIZE=100000
 SAVEHIST=100000
 
 bindkey -e
