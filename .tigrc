@@ -1,3 +1,6 @@
+bind generic G move-last-line
 set main-view = id date author commit-title:graph=yes,refs=yes
 set line-graphics = ascii
 set vertical-split = false
+set split-view-height = 80%
+set diff-context = 5
