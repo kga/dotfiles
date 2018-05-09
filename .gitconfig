@@ -28,6 +28,7 @@
     psuh = push
     pus  = push
     puh  = push
+    vim  = !git ls-files | peco | xargs -o vim
 #[pager]
 #    log  = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 #    diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less

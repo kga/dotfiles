@@ -138,7 +138,8 @@ alias cp='cp -v'
 alias mv='mv -iv'
 alias tree='tree -NC'
 
-alias v='vim'
+alias v='nvim'
+alias vim='nvim'
 alias l='less'
 alias lv='less'
 

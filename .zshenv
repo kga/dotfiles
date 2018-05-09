@@ -26,6 +26,6 @@ path=(
 
 #export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
 
-eval "$(anyenv init - zsh)"
+eval "$(anyenv init - --no-rehash zsh)"
 
 umask 022
