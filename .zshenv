@@ -14,6 +14,7 @@ typeset -U path
 path=(
     /usr/local/bin
     /usr/local/sbin
+    /usr/local/opt/ruby/bin
     /usr/sbin
 
     $GOPATH/bin

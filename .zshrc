@@ -129,7 +129,6 @@ elif [ $(uname) = 'Linux' ]; then
 fi
 
 alias ls='ls -G'
-alias sl='ls'
 alias ll='ls -lh'
 alias la='ll -a'
 
@@ -149,6 +148,7 @@ alias ce='carton exec'
 alias be='bundle exec'
 
 alias gi='git'
+alias g='git'
 alias gitst='git st'
 
 function peco-src () {

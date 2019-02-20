@@ -7,9 +7,6 @@ script_line7 = use lib 't/lib';
 script_line8 = use lib 'local/lib/perl5';
 script_line9 = use lib glob 'modules/*/lib';
 
-history_file = '.reply_history'
-history_length = 1000
-
 [AutoRefresh]
 [Colors]
 [DataDumper]
@@ -20,8 +17,9 @@ history_length = 1000
 [LoadClass]
 [Packages]
 [ReadLine]
+history_file = .replyhistory
+history_length = 10000
 [ResultCache]
-
 [Autocomplete::Functions]
 [Autocomplete::Globals]
 [Autocomplete::Keywords]
