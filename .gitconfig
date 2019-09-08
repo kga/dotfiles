@@ -50,4 +50,4 @@
 [credential]
     helper = osxkeychain
 [pull]
-	rebase = preserve
+	rebase = merges

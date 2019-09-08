@@ -4,3 +4,4 @@ set line-graphics = ascii
 set vertical-split = false
 set split-view-height = 80%
 set diff-context = 5
+set diff-options = -m --first-parent
