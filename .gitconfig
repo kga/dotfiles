@@ -45,8 +45,6 @@
     lineNumber = true
 [i18n]
     commitencoding = utf-8
-[ghq]
-    root = ~/dev/src
 [credential]
     helper = osxkeychain
 [pull]
