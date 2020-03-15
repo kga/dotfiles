@@ -7,7 +7,7 @@ function peco-git-branch-checkout () {
             selected_branch_name="$(echo ${selected_branch_name} | perl -ne 's/^.*?remotes\/(.*?)\/(.*)$/\2/;print')";;
     esac
     if [ -n "$selected_branch_name" ]; then
-        BUFFER="git checkout ${selected_branch_name}"
+        BUFFER="git switch ${selected_branch_name}"
         zle accept-line
     fi
     zle clear-screen
