@@ -1,7 +1,0 @@
-#!/bin/sh
-
-AUTO_SSH_ALIVE=`ps x | grep autossh | grep -v grep | grep -v autossh_status | wc -l`
-
-if [[ $AUTO_SSH_ALIVE -eq 1 ]]; then
-    echo '#[fg=white,bg=red] AUTOSSH #[default] '
-fi

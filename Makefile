@@ -13,4 +13,3 @@ symlinks:
 	mkdir -p $(HOME)/.config/peco
 	ln -sf $(PWD)/.peco.config.json $(HOME)/.config/peco/config.json
 	mkdir -p $(HOME)/bin
-	ln -sf $(PWD)/autossh_status    $(HOME)/bin/autossh_status
