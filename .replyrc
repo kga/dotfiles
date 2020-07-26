@@ -2,12 +2,8 @@ script_line1 = use strict
 script_line2 = use warnings
 script_line3 = use 5.020000
 script_line4 = use Encode
-script_line6 = use lib 'lib';
-script_line7 = use lib 't/lib';
-script_line8 = use lib 'local/lib/perl5';
-script_line9 = use lib glob 'modules/*/lib';
+script_line6 = use lib '.', 'lib', 't/lib', 'local/lib/perl5', glob 'modules/*/lib'
 
-[AutoRefresh]
 [Colors]
 [DataDumper]
 [FancyPrompt]
@@ -17,9 +13,12 @@ script_line9 = use lib glob 'modules/*/lib';
 [LoadClass]
 [Packages]
 [ReadLine]
-history_file = .replyhistory
-history_length = 10000
 [ResultCache]
+[AutoRefresh]
+
+[CollapseStack]
+num_lines = 1
+
 [Autocomplete::Functions]
 [Autocomplete::Globals]
 [Autocomplete::Keywords]
