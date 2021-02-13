@@ -19,6 +19,8 @@ path=(
     /usr/local/opt/ruby/bin
     /usr/sbin
 
+    /usr/local/opt/mysql@5.6/bin
+
     $GOPATH/bin
 
     $HOME/bin
