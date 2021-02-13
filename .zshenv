@@ -22,13 +22,13 @@ path=(
     $GOPATH/bin
 
     $HOME/bin
-    $HOME/.anyenv/bin
 
     $path
 )
 
 #export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
 
-eval "$(anyenv init - --no-rehash zsh)"
+eval "$(nodenv init - --no-rehash)"
+eval "$(plenv init - --no-rehash)"
 
 umask 022
