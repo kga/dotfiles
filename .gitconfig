@@ -29,10 +29,6 @@
     puh  = push
     vim  = !git ls-files | peco | xargs -o vim
     delete-merged = !git branch --merged | grep -v -e \\* -e master -e devel -e main | xargs -I % git branch -d %
-#[pager]
-#    log  = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
-#    diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
-#    show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 [color]
     ui = auto
 [color "grep"]
