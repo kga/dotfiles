@@ -1,5 +1,3 @@
-[include]
-    path = ~/.gitconfig.local
 [user]
     name = Wataru TOYA
     email = watrty@gmail.com
@@ -51,3 +49,5 @@
 	rebase = merges
 [init]
 	defaultBranch = main
+[include]
+    path = ~/.gitconfig.local
