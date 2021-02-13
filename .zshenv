@@ -30,7 +30,7 @@ path=(
 
 #export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
 
-eval "$(nodenv init - --no-rehash)"
-eval "$(plenv init - --no-rehash)"
+eval "$(nodenv init - --no-rehash zsh)"
+eval "$(plenv init - --no-rehash zsh)"
 
 umask 022
