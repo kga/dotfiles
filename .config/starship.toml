@@ -47,6 +47,7 @@ format = "[($version )]($style)"
 [perl]
 format = "[($version )]($style)"
 version_format = "$raw"
+style = "bold #2381ab"
 
 [ruby]
 format = "[($version )]($style)"
