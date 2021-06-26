@@ -38,8 +38,10 @@ style = "green"
 
 [git_commit]
 commit_hash_length = 8
-format = "[|](yellow) [\\($hash\\)]($style) [\\($tag\\)]($style)"
+format = "[|](yellow) [$hash( $tag) [|](yellow) ]($style)"
 style = "cyan"
+only_detached = false
+tag_disabled = false
 
 [package]
 format = "[($version )]($style)"
