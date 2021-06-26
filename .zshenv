@@ -32,5 +32,7 @@ path=(
 
 eval "$(nodenv init - --no-rehash zsh)"
 eval "$(plenv init - --no-rehash zsh)"
+eval "$(rbenv init - --no-rehash zsh)"
+eval "$(pyenv init --path)"
 
 umask 022
