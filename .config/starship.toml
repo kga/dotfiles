@@ -1,0 +1,71 @@
+format = """
+$directory\
+$git_status\
+$git_branch\
+$git_commit\
+$git_state\
+$hg_branch\
+$package\
+$perl\
+$ruby\
+$python\
+$nodejs\
+$golang\
+$terraform\
+$cmd_duration\
+$custom\
+$line_break\
+$jobs\
+$time\
+$character"""
+
+[directory]
+truncation_length = 5
+truncate_to_repo = false
+format = " [$path]($style)[$read_only]($read_only_style) "
+style = "blue"
+truncation_symbol = ".../"
+[directory.substitutions]
+"ghq/github.com/" = "gh/"
+
+[git_status]
+format = "([$all_status$ahead_behind]($style) )"
+style = "bold blue"
+
+[git_branch]
+format = "[$branch]($style) "
+style = "green"
+
+[git_commit]
+commit_hash_length = 8
+format = "[|](yellow) [\\($hash\\)]($style) [\\($tag\\)]($style)"
+style = "cyan"
+
+[package]
+format = "[($version )]($style)"
+
+[perl]
+format = "[($version )]($style)"
+version_format = "$raw"
+
+[ruby]
+format = "[($version )]($style)"
+version_format = "$raw"
+
+[python]
+format = "[${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
+version_format = "$raw"
+
+[nodejs]
+format = "[($version )]($style)"
+version_format = "$raw"
+
+[terraform]
+format = "[($workspace )]($style)"
+version_format = "$raw"
+
+[time]
+format = "[$time]($style) "
+time_format = "%R"
+style = "bold"
+disabled = false
