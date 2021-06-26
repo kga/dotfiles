@@ -12,4 +12,5 @@ symlinks:
 	ln -sf $(PWD)/.replyrc          $(HOME)/.replyrc
 	mkdir -p $(HOME)/.config/peco
 	ln -sf $(PWD)/.peco.config.json $(HOME)/.config/peco/config.json
+	ln -sf $(PWD)/.config/starship.toml $(HOME)/.config/starship.toml
 	mkdir -p $(HOME)/bin
