@@ -1,77 +1,5 @@
-# man zshcontrib
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' max-exports 5
-zstyle ':vcs_info:*+*:*' debug false
-zstyle ':vcs_info:git:*' get-revision true
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:*'     formats       '%b | %i'
-zstyle ':vcs_info:git:*' formats       '%F{green}%b%f %F{yellow}|%f %F{cyan}%0.8i%f' '%c' '%u' '%m'
-zstyle ':vcs_info:*'     actionformats '%F{green}%b%f %F{yellow}|%f %F{cyan}%0.8i%f' '%c' '%u' '%m' '(!%a)'
-zstyle ':vcs_info:git:*' unstagedstr '-'
-zstyle ':vcs_info:git:*' stagedstr '+'
-
-autoload -Uz add-zsh-hook
-
-# man zshcontrib -> Hooks in vcs_info -> set-message
-## $1: n == $vcs_info_msg_{n}_ 何番目の formats か
-zstyle ':vcs_info:git+set-message:*' hooks \
-                                         git-hook-inside-work-tree \
-                                         git-hook-untracked
-
-# この hook 以降は work-tree 内じゃないと実行されない
-function +vi-git-hook-inside-work-tree() {
-    if [[ $(command git rev-parse --is-inside-work-tree 2> /dev/null) != 'true' ]]; then
-        return 1
-    fi
-}
-
-# $vcs_info_msg_1_
-# untracked があったら misc に ? をいれる
-function +vi-git-hook-untracked() {
-    if [[ $1 == 1 ]]; then
-        if command git status --porcelain 2> /dev/null \
-            | awk '{print $1}' \
-            | command grep -F '??' > /dev/null 2>&1 ; then
-
-            hook_com[misc]='?'
-        fi
-    fi
-}
-
-function echo_vcs_info() {
-    LANG=en_US.UTF-8 vcs_info
-
-    local PROMPT_REPOS=''
-    local PROMPT_REPOS_STATUS=''
-
-    [[ -n $vcs_info_msg_1_ ]] && PROMPT_REPOS_STATUS+="%F{red}$vcs_info_msg_1_%f"
-    [[ -n $vcs_info_msg_2_ ]] && PROMPT_REPOS_STATUS+="%F{yellow}$vcs_info_msg_2_%f"
-    [[ -n $vcs_info_msg_3_ ]] && PROMPT_REPOS_STATUS+="%F{blue}$vcs_info_msg_3_%f"
-    [[ -n $vcs_info_msg_4_ ]] && PROMPT_REPOS_STATUS+=" %F{red}$vcs_info_msg_4_%f"
-
-    [[ -n $PROMPT_REPOS_STATUS ]] && PROMPT_REPOS+=" $PROMPT_REPOS_STATUS"
-    [[ -n $vcs_info_msg_0_ ]] && PROMPT_REPOS+=" $vcs_info_msg_0_"
-
-PROMPT="$PROMPT_EXIT
-$PROMPT_CWD$PROMPT_REPOS
-$PROMPT_L"
-}
-add-zsh-hook precmd echo_vcs_info
-
 autoload -U colors
 colors
-
-PROMPT_EXIT="%(?..%{$fg[red]%}exit: %?%{$reset_color%}
-)"
-PROMPT_CWD=" %{$fg[blue]%}%(7~,%-3~/.../%3~,%~)%{$reset_color%}"
-PROMPT_L="%D{%H:%M} %{$fg[red]%}%(!.#.>)%{$reset_color%} "
-
-PROMPT="$PROMPT_EXIT
-$PROMPT_CWD
-$PROMPT_L"
-
-PROMPT2="%_%{$fg[green]%}>%{$reset_color%} "
-#RPROMPT="[%n@%m]"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -218,3 +146,5 @@ bindkey '^g' peco-git-branch-checkout
 bindkey '^r' peco-select-history
 
 source /usr/local/share/zsh/site-functions/_aws
+
+eval "$(starship init zsh)"
