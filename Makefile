@@ -10,7 +10,6 @@ symlinks:
 	ln -sf $(PWD)/.gitignore        $(HOME)/.gitignore
 	ln -sf $(PWD)/.tigrc            $(HOME)/.tigrc
 	ln -sf $(PWD)/.replyrc          $(HOME)/.replyrc
-	mkdir -p $(HOME)/.config/peco
-	ln -sf $(PWD)/.config/peco/config.json $(HOME)/.config/peco/config.json
+	mkdir -p $(HOME)/.config
 	ln -sf $(PWD)/.config/starship.toml $(HOME)/.config/starship.toml
 	mkdir -p $(HOME)/bin
