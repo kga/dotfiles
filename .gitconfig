@@ -27,7 +27,7 @@
     psuh = push
     pus  = push
     puh  = push
-    vim  = !git ls-files | peco | xargs -o vim
+    vim  = !git ls-files | fzf | xargs -o code
     delete-merged = !git branch --merged | grep -v -e \\* -e master -e devel -e main | xargs -I % git branch -d %
 [color]
     ui = auto
