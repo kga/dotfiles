@@ -141,8 +141,6 @@ REPORTTIME=10
 
 for f (~/.zsh/**/*.zsh) source "${f}"
 
-### peco ###
-bindkey '^g' peco-git-branch-checkout
 bindkey '^r' peco-select-history
 
 source /usr/local/share/zsh/site-functions/_aws
