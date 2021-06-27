@@ -43,10 +43,8 @@ HISTSIZE=100000
 SAVEHIST=100000
 
 bindkey -e
-bindkey '' history-beginning-search-backward
-bindkey '' history-beginning-search-forward
-bindkey '' history-incremental-pattern-search-backward
-bindkey '' history-incremental-pattern-search-forward
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
 
 if [ $(uname) = 'Darwin' ]; then
     LS_OPTIONS=-FG
@@ -141,8 +139,10 @@ REPORTTIME=10
 
 for f (~/.zsh/**/*.zsh) source "${f}"
 
-bindkey '^r' peco-select-history
-
 source /usr/local/share/zsh/site-functions/_aws
 
 eval "$(starship init zsh)"
+
+# $(brew --prefix)/opt/fzf/install
+export FZF_CTRL_R_OPTS="--height=100%"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
