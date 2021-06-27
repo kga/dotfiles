@@ -63,21 +63,10 @@ alias cp='cp -v'
 alias mv='mv -iv'
 alias tree='tree -NC'
 
-alias v='nvim'
 alias vim='nvim'
-alias l='less'
-alias lv='less'
-
-alias pd='popd'
 
 alias ce='carton exec'
 alias be='bundle exec'
-
-alias gi='git'
-alias g='git'
-alias gitst='git st'
-alias issues='hub issue'
-issue () { hub browse -- issues/$1 }
 
 function peco-src () {
     local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
@@ -89,8 +78,6 @@ function peco-src () {
 }
 zle -N peco-src
 bindkey '' peco-src
-
-alias st='tig status'
 
 alias -g L='| $PAGER'
 alias -g G='| grep'
