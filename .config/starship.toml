@@ -12,6 +12,7 @@ $python\
 $nodejs\
 $golang\
 $terraform\
+$gcloud\
 $cmd_duration\
 $custom\
 $line_break\
@@ -66,6 +67,9 @@ version_format = "$raw"
 [terraform]
 format = "[($workspace )]($style)"
 version_format = "$raw"
+
+[gcloud]
+format = "[($active )($project )(@$domain)]($style) "
 
 [time]
 format = "[$time]($style) "
