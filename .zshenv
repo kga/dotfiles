@@ -30,9 +30,4 @@ path=(
 
 #export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
 
-eval "$(nodenv init - --no-rehash zsh)"
-eval "$(plenv init - --no-rehash zsh)"
-eval "$(rbenv init - --no-rehash zsh)"
-eval "$(pyenv init --path)"
-
 umask 022

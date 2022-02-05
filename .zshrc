@@ -122,3 +122,5 @@ eval "$(starship init zsh)"
 # $(brew --prefix)/opt/fzf/install
 export FZF_CTRL_R_OPTS="--height=100%"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. $(brew --prefix asdf)/libexec/asdf.sh
