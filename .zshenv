@@ -30,6 +30,4 @@ path=(
 
 #export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
 
-eval "$(pyenv init --path)"
-
 umask 022
