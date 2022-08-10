@@ -29,6 +29,7 @@
     puh  = push
     vim  = !git ls-files | fzf | xargs -o code
     delete-merged = !git branch --merged | grep -v -e \\* -e master -e devel -e main | xargs -I % git branch -d %
+    sc = switch -c
 [color]
     ui = auto
 [color "grep"]
