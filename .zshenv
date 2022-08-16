@@ -30,4 +30,6 @@ path=(
 
 #export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 umask 022
