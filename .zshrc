@@ -1,7 +1,7 @@
 autoload -U colors
 colors
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=($(brew --prefix)/share/zsh-completions $fpath)
 
 setopt always_last_prompt
 setopt always_to_end
@@ -115,7 +115,7 @@ REPORTTIME=10
 
 for f (~/.zsh/**/*.zsh) source "${f}"
 
-source /usr/local/share/zsh/site-functions/_aws
+source $(brew --prefix)/share/zsh/site-functions/_aws
 
 eval "$(starship init zsh)"
 
