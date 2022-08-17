@@ -1,7 +1,7 @@
 autoload -U colors
 colors
 
-fpath=($(brew --prefix)/share/zsh-completions $fpath)
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
 setopt always_last_prompt
 setopt always_to_end
