@@ -109,13 +109,9 @@ if [[ "$TERM" == "xterm-256color" || "$TERM" == "xterm" ]]; then
     chpwd
 fi
 
-eval "$(hub alias -s)"
-
 REPORTTIME=10
 
 for f (~/.zsh/**/*.zsh) source "${f}"
-
-source $(brew --prefix)/share/zsh/site-functions/_aws
 
 eval "$(starship init zsh)"
 
