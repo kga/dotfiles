@@ -19,8 +19,6 @@ path=(
     /usr/local/opt/ruby/bin
     /usr/sbin
 
-    /usr/local/opt/mysql@5.6/bin
-
     $GOPATH/bin
 
     $HOME/bin
@@ -30,6 +28,6 @@ path=(
 
 #export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 umask 022
