@@ -42,6 +42,7 @@ format = "[|](yellow) [$hash( $tag) [|](yellow) ]($style)"
 style = "cyan"
 only_detached = false
 tag_disabled = false
+tag_symbol = ""
 
 [package]
 format = "[($version )]($style)"
