@@ -3,7 +3,6 @@ unsetopt GLOBAL_RCS
 export LANG=ja_JP.UTF-8
 export LANGUAGE=ja
 
-export MANPATH=/usr/local/man:$MANPATH
 export LESS='--RAW-CONTROL-CHARS --IGNORE-CASE --status-column'
 export PAGER=less
 export EDITOR=vim
@@ -16,7 +15,6 @@ typeset -U path
 path=(
     /usr/local/bin
     /usr/local/sbin
-    /usr/local/opt/ruby/bin
     /usr/sbin
 
     $GOPATH/bin
