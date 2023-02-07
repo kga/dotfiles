@@ -12,6 +12,7 @@ $python\
 $nodejs\
 $golang\
 $terraform\
+$aws\
 $cmd_duration\
 $custom\
 $line_break\
@@ -67,6 +68,10 @@ version_format = "$raw"
 [terraform]
 format = "[($workspace )]($style)"
 version_format = "$raw"
+
+[aws]
+format = '[( $profile )(\[$duration\] )]($style)'
+style = "fg:#000000 bg:#FF9900"
 
 [time]
 format = "[$time]($style) "
