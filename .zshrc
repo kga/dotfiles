@@ -121,5 +121,3 @@ export FZF_CTRL_R_OPTS="--height=100%"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 . $(brew --prefix asdf)/libexec/asdf.sh
-
-eval "$(op completion zsh)"; compdef _op op
