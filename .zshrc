@@ -118,6 +118,6 @@ eval "$(starship init zsh)"
 # https://github.com/junegunn/fzf#using-homebrew
 # $(brew --prefix)/opt/fzf/install
 export FZF_CTRL_R_OPTS="--height=100%"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 
 . $(brew --prefix asdf)/libexec/asdf.sh
