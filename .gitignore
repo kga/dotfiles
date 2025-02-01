@@ -23,3 +23,5 @@ local.zsh
 
 tags
 .tags
+
+*.local.zsh
