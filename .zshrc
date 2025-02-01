@@ -1,5 +1,4 @@
-autoload -U colors
-colors
+autoload -U colors && colors
 
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
@@ -36,7 +35,6 @@ compinit -u
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-compdef _tex platex
 
 HISTFILE="$HOME/.zhistory"
 HISTSIZE=100000
@@ -63,6 +61,7 @@ alias cp='cp -v'
 alias mv='mv -iv'
 alias tree='tree -NC'
 
+alias vi='vim'
 alias vim='nvim'
 
 alias ce='carton exec'
@@ -70,44 +69,6 @@ alias be='bundle exec'
 
 alias -g L='| $PAGER'
 alias -g G='| grep'
-
-if [[ "$TERM" == "xterm-256color" || "$TERM" == "xterm" ]]; then
-    chpwd () { echo -n "_`dirs`\\" }
-    preexec() {
-        # see [zsh-workers:13180]
-        # http://www.zsh.org/mla/workers/2000/msg03993.html
-        emulate -L zsh
-        local -a cmd; cmd=(${(z)2})
-        case $cmd[1] in
-            fg)
-                if (( $#cmd == 1 )); then
-                    cmd=(builtin jobs -l %+)
-                else
-                    cmd=(builtin jobs -l $cmd[2])
-                fi
-                ;;
-            %*)
-                cmd=(builtin jobs -l $cmd[1])
-                ;;
-            cd)
-                if (( $#cmd >= 2)); then
-                    cmd[1]=$cmd[2]
-                fi
-                ;;
-            *)
-                echo -n "k$cmd[1]:t\\"
-                return
-                ;;
-        esac
-
-        local -A jt; jt=(${(kv)jobtexts})
-
-        $cmd >>(read num rest
-            cmd=(${(z)${(e):-\$jt$num}})
-            echo -n "k$cmd[1]:t\\") 2>/dev/null
-    }
-    chpwd
-fi
 
 REPORTTIME=10
 

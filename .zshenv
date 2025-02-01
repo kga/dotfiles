@@ -1,7 +1,7 @@
 unsetopt GLOBAL_RCS
 
 export LANG=ja_JP.UTF-8
-export LANGUAGE=ja
+export LANGUAGE=ja_JP.UTF-8
 
 export LESS='--RAW-CONTROL-CHARS --IGNORE-CASE --status-column'
 export PAGER=less
