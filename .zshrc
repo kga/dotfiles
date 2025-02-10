@@ -30,7 +30,7 @@ unsetopt promptcr
 
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-autoload -U compinit && compinit -u
+autoload -Uz compinit && compinit -u
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -79,5 +79,3 @@ eval "$(starship init zsh)"
 # $(brew --prefix)/opt/fzf/install
 export FZF_CTRL_R_OPTS="--height=100%"
 eval "$(fzf --zsh)"
-
-. $(brew --prefix asdf)/libexec/asdf.sh
