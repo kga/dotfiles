@@ -79,3 +79,4 @@ eval "$(starship init zsh)"
 # $(brew --prefix)/opt/fzf/install
 export FZF_CTRL_R_OPTS="--height=100%"
 eval "$(fzf --zsh)"
+eval "$(mise activate zsh)"
