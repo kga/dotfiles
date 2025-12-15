@@ -70,7 +70,7 @@ format = "[($workspace )]($style)"
 version_format = "$raw"
 
 [aws]
-format = '[( $profile )(\[$duration\] )]($style)'
+format = '[( $profile )]($style)'
 style = "fg:#000000 bg:#FF9900"
 
 [time]
