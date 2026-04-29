@@ -5,14 +5,17 @@ export LANGUAGE=ja_JP.UTF-8
 
 export LESS='--RAW-CONTROL-CHARS --IGNORE-CASE --status-column'
 export PAGER=less
-export EDITOR=vim
+export EDITOR=nvim
 
 export MYSQL_PS1="(\u@\h) [\d]> "
 
 export GOPATH=$HOME/dev
+export HOMEBREW_PREFIX=/opt/homebrew
 
 typeset -U path
 path=(
+    $HOMEBREW_PREFIX/bin
+    $HOMEBREW_PREFIX/sbin
     /usr/local/bin
     /usr/local/sbin
     /usr/sbin
@@ -24,9 +27,5 @@ path=(
 
     $path
 )
-
-#export SSL_CERT_FILE="$(brew --prefix)/etc/openssl/cert.pem"
-
-[ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 umask 022
