@@ -1,6 +1,6 @@
 autoload -U colors && colors
 
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 
 setopt always_last_prompt
 setopt always_to_end
@@ -43,12 +43,9 @@ bindkey -e
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
-if [ $(uname) = 'Darwin' ]; then
-    LS_OPTIONS=-FG
+if [[ $OSTYPE == darwin* ]]; then
     alias -g CP='| pbcopy'
     export __CF_USER_TEXT_ENCODING='0x1F5:0x08000100:14'
-elif [ $(uname) = 'Linux' ]; then
-    LS_OPTIONS=-F --color
 fi
 
 alias ls='ls -G'
@@ -60,7 +57,7 @@ alias cp='cp -v'
 alias mv='mv -iv'
 alias tree='tree -NC'
 
-alias vi='vim'
+alias vi='nvim'
 alias vim='nvim'
 
 alias ce='carton exec'
@@ -74,9 +71,4 @@ REPORTTIME=10
 for f (~/.zsh/**/*.zsh) source "${f}"
 
 eval "$(starship init zsh)"
-
-# https://github.com/junegunn/fzf#using-homebrew
-# $(brew --prefix)/opt/fzf/install
-export FZF_CTRL_R_OPTS="--height=100%"
-eval "$(fzf --zsh)"
 eval "$(mise activate zsh)"
