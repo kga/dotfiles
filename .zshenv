@@ -20,6 +20,7 @@ path=(
     $GOPATH/bin
 
     $HOME/bin
+    $HOME/.local/bin
 
     $path
 )
