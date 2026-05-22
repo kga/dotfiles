@@ -6,8 +6,15 @@
     editor = vim -u NONE -i NONE -N -c 'syntax on'
 [diff]
     algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
 [push]
-    default = current
+    autoSetupRemote = true
+    followTags = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
 [alias]
     st  = status --branch --short
     tst = st
@@ -43,8 +50,8 @@
 [credential]
     helper = osxkeychain
 [pull]
-	rebase = merges
+    rebase = merges
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [include]
     path = ~/.gitconfig.local
