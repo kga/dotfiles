@@ -7,6 +7,7 @@
 "~/.gitignore"            = { source = ".gitignore" }
 "~/.tigrc"                = { source = ".tigrc" }
 "~/.config/starship.toml" = { source = ".config/starship.toml" }
+"~/.config/mise/config.toml" = { source = ".config/mise/config.toml" }
 
 [bootstrap.brew.taps]
 "hashicorp/tap"              = "https://github.com/hashicorp/homebrew-tap.git"
