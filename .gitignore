@@ -25,3 +25,5 @@ tags
 .tags
 
 *.local.zsh
+
+**/.claude/settings.local.json
