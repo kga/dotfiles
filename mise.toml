@@ -1,0 +1,9 @@
+[dotfiles]
+"~/.zshenv"               = { source = ".zshenv" }
+"~/.zshrc"                = { source = ".zshrc" }
+"~/.zsh"                  = { source = ".zsh", mode = "symlink-each" }
+"~/.tmux.conf"            = { source = ".tmux.conf" }
+"~/.gitconfig"            = { source = ".gitconfig" }
+"~/.gitignore"            = { source = ".gitignore" }
+"~/.tigrc"                = { source = ".tigrc" }
+"~/.config/starship.toml" = { source = ".config/starship.toml" }
