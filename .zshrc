@@ -55,7 +55,6 @@ alias la='ll -a'
 alias rm='rm -i'
 alias cp='cp -v'
 alias mv='mv -iv'
-alias tree='tree -NC'
 
 alias vi='nvim'
 alias vim='nvim'

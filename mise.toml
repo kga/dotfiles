@@ -1,0 +1,44 @@
+[dotfiles]
+"~/.zshenv"               = { source = ".zshenv" }
+"~/.zshrc"                = { source = ".zshrc" }
+"~/.zsh"                  = { source = ".zsh", mode = "symlink-each" }
+"~/.tmux.conf"            = { source = ".tmux.conf" }
+"~/.gitconfig"            = { source = ".gitconfig" }
+"~/.gitignore"            = { source = ".gitignore" }
+"~/.tigrc"                = { source = ".tigrc" }
+"~/.config/starship.toml" = { source = ".config/starship.toml" }
+"~/.config/mise/config.toml" = { source = ".config/mise/config.toml" }
+
+[bootstrap.brew.taps]
+"hashicorp/tap"              = "https://github.com/hashicorp/homebrew-tap.git"
+"mackerelio/mackerel-agent"  = "https://github.com/mackerelio/homebrew-mackerel-agent.git"
+
+[bootstrap.packages]
+"brew:starship"  = "latest"
+"brew:mise"      = "latest"
+"brew:wget"      = "latest"
+
+"brew:git"       = "latest"
+"brew:gh"        = "latest"
+"brew:ghq"       = "latest"
+"brew:tig"       = "latest"
+"brew:gibo"      = "latest"
+"brew:pinact"    = "latest"
+
+"brew:neovim"    = "latest"
+"brew:tmux"      = "latest"
+"brew:fzf"       = "latest"
+"brew:jq"        = "latest"
+
+"brew:go"        = "latest"
+
+"brew:colima"          = "latest"
+"brew:docker"          = "latest"
+"brew:docker-buildx"   = "latest"
+"brew:docker-compose"  = "latest"
+
+"brew:hashicorp/tap/terraform"                  = "latest"
+"brew:mackerelio/mackerel-agent/mackerel-agent" = "latest"
+"brew:mackerelio/mackerel-agent/mkr"            = "latest"
+
+"brew:xcodegen"   = "latest"
